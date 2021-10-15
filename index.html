@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <title>百度离线地图demo</title>
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="initial-scale=1.0, user-scalable=no">
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge">
+    <script type="text/javascript" src="config.js"></script>
+</head>
+<body>
+<div id="container"></div>
+<script>
+    let map = new BMap.Map('container');
+    map.centerAndZoom(new BMap.Point(116.404, 39.915), 12);
+    map.enableScrollWheelZoom(true);
+    var MAX = 100;
+    var markers = [];
+    for (let i = 0; i < MAX; i++) {
+        let pt = new BMap.Point(Math.random() * 0.5 + 116.404, Math.random() * 0.5 + 39.915);
+        markers.push(new BMap.Marker(pt));
+    }
+    var markerClusterer = new BMapLib.MarkerClusterer(map, {markers: markers});
+</script>
+</body>
+<style>
+    html, body, #container {
+        overflow: hidden;
+        width: 100%;
+        height: 100%;
+        margin: 0;
+        font-family: "微软雅黑";
+    }
+</style>
+</html>
